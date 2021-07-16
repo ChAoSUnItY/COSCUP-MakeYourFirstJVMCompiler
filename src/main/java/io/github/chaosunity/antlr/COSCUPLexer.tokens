@@ -1,0 +1,15 @@
+DIGIT=1
+VAR=2
+EQ=3
+PLUS=4
+MINUS=5
+STAR=6
+SLASH=7
+ID=8
+SPACE=9
+'var'=2
+'='=3
+'+'=4
+'-'=5
+'*'=6
+'/'=7

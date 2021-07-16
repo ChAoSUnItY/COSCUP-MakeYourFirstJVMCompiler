@@ -1,0 +1,33 @@
+plugins {
+    id 'antlr'
+    id 'java'
+    id 'application'
+}
+
+group 'io.github.chaosunity'
+version '1.0.0'
+
+application {
+    mainClassName "io.github.chaosunity.Compiler"
+    applicationDefaultJvmArgs += ["--enable-preview", "--add-exports", "java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED"]
+}
+
+targetCompatibility = JavaVersion.VERSION_16
+sourceCompatibility = JavaVersion.VERSION_16
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    antlr "org.antlr:antlr4:4.5.3"
+}
+
+tasks.generateGrammarSource {
+    maxHeapSize = "64m"
+    arguments += ["-visitor", "-long-messages"]
+}
+
+tasks.compileJava {
+    options.compilerArgs += ["--enable-preview", "--add-exports", "java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED"]
+}
